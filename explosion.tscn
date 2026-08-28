@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
-radius = 53.0
+radius = 43.0
 
 [node name="Explosion" type="Area2D" unique_id=1402060542]
 collision_mask = 4

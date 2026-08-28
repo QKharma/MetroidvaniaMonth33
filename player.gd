@@ -7,7 +7,7 @@ const BOMB = preload("uid://c8id523xijugp")
 const BOUNCY_BOMB = preload("uid://cvb7r3jh7f8ik")
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -250.0
 
 var movement_velocity: Vector2 = Vector2.ZERO
 var knockback_velocity: Vector2 = Vector2.ZERO
@@ -51,7 +51,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("lmb"):
 		var new_bomb = BOUNCY_BOMB.instantiate()
 		new_bomb.position = position
-		new_bomb.velocity = (get_global_mouse_position() - global_position).normalized() * 500
+		new_bomb.velocity = (get_global_mouse_position() - global_position).normalized() * 400
 		new_bomb.player = self
 		get_tree().get_root().add_child(new_bomb)
 
