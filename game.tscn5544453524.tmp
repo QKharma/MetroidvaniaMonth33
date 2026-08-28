@@ -1,0 +1,59 @@
+[gd_scene format=4 uid="uid://b62jyy02ngxyv"]
+
+[ext_resource type="Texture2D" uid="uid://de1d0blay58a6" path="res://icon.svg" id="1_e2o6t"]
+[ext_resource type="Script" uid="uid://b400at2swgu6" path="res://player.gd" id="1_feb5d"]
+[ext_resource type="Texture2D" uid="uid://ci31i4nqehlhv" path="res://assets/test_tileset.png" id="2_feb5d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 12.0
+height = 32.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
+texture = ExtResource("2_feb5d")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_g4v7s"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_fc0e3")
+
+[node name="Game" type="Node2D" unique_id=172803925]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=2135259425]
+script = ExtResource("1_feb5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=263713233]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_e2o6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=104884527]
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1271463733]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1504070231]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD8/wcAAAACAAAAAAADAAUAAAAAAAAAAAADAAYAAAABAAAAAGADAAcAAAABAAAAAGAEAAUAAAABAAAAAAAEAAYAAAABAAEAAAAEAAcAAAABAAEAAAAFAAUAAAABAAAAAAAFAAYAAAABAAEAAAAFAAcAAAABAAEAAAAGAAUAAAACAAAAAAAGAAYAAAABAAAAAFAGAAcAAAABAAAAAFD5/wUAAAAAAAAAAAD5/wYAAAAAAAEAAAD5/wcAAAAAAAEAAAD5/wgAAAAAAAEAAAD5/wkAAAAAAAEAAAD5/woAAAAAAAIAAAD6/wUAAAABAAAAAAD6/wYAAAABAAEAAAD6/wcAAAABAAEAAAD6/wgAAAABAAEAAAD6/wkAAAABAAEAAAD6/woAAAABAAIAAAD7/wUAAAACAAAAAAD7/wYAAAABAAAAAFD7/wcAAAADAAEAAAD7/wgAAAABAAEAAAD7/wkAAAABAAEAAAD7/woAAAABAAIAAAD8/wgAAAADAAEAAAD8/wkAAAABAAEAAAD8/woAAAABAAIAAAD9/wgAAAABAAAAAAD9/wkAAAABAAEAAAD9/woAAAABAAIAAAD+/wgAAAABAAAAAAD+/wkAAAABAAEAAAD+/woAAAABAAIAAAD//wgAAAABAAAAAAD//wkAAAABAAEAAAD//woAAAABAAIAAAAAAAgAAAABAAAAAAAAAAkAAAABAAEAAAAAAAoAAAABAAIAAAABAAgAAAABAAAAAAABAAkAAAABAAEAAAABAAoAAAABAAIAAAACAAgAAAABAAAAAAACAAkAAAABAAEAAAACAAoAAAABAAIAAAADAAgAAAADAAAAAAADAAkAAAABAAEAAAADAAoAAAABAAIAAAAEAAgAAAABAAEAAAAEAAkAAAABAAEAAAAEAAoAAAABAAIAAAAFAAgAAAABAAEAAAAFAAkAAAABAAEAAAAFAAoAAAABAAIAAAAGAAgAAAABAAAAAFAGAAkAAAABAAAAAFAGAAoAAAACAAIAAAA=")
+tile_set = SubResource("TileSet_g4v7s")

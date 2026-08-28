@@ -1,0 +1,88 @@
+[gd_scene format=4 uid="uid://b62jyy02ngxyv"]
+
+[ext_resource type="Texture2D" uid="uid://de1d0blay58a6" path="res://icon.svg" id="1_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://c4eh60k1ervki" path="res://assets/677e4803544b9649d7135f44_65ea99845e53084280471b71_most_20beautiful_20landscapes_20in_20the_20world.webp" id="1_fc0e3"]
+[ext_resource type="Script" uid="uid://b400at2swgu6" path="res://player.gd" id="1_feb5d"]
+[ext_resource type="Texture2D" uid="uid://ci31i4nqehlhv" path="res://assets/test_tileset.png" id="2_feb5d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
+size = Vector2(32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fc0e3"]
+texture = ExtResource("2_feb5d")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_g4v7s"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_fc0e3")
+
+[node name="Game" type="Node2D" unique_id=172803925]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2042196450]
+texture = ExtResource("1_fc0e3")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=2135259425 node_paths=PackedStringArray("explosion_target") groups=["player"]]
+collision_layer = 4
+script = ExtResource("1_feb5d")
+explosion_target = NodePath("ExplosionTarget")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=263713233]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_e2o6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=104884527]
+shape = SubResource("RectangleShape2D_fc0e3")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1271463733]
+
+[node name="ExplosionTarget" type="Marker2D" parent="Player" unique_id=51618784]
+position = Vector2(0, -8)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1504070231]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD5/wcAAAABAAAAAAD5/wgAAAABAAEAAAD5/wkAAAABAAIAAAD6/wcAAAABAAAAAAD6/wgAAAABAAEAAAD6/wkAAAABAAIAAAD7/wcAAAABAAAAAAD7/wgAAAABAAEAAAD7/wkAAAABAAIAAAD8/wcAAAABAAAAAAD8/wgAAAABAAEAAAD8/wkAAAABAAIAAAD9/wgAAAABAAEAAAD9/wkAAAABAAIAAAD+/wgAAAABAAEAAAD+/wkAAAABAAIAAAD//wgAAAABAAEAAAD//wkAAAABAAIAAAAAAAgAAAABAAEAAAAAAAkAAAABAAIAAAABAAgAAAABAAEAAAABAAkAAAABAAIAAAACAAgAAAABAAEAAAACAAkAAAABAAIAAAADAAgAAAABAAEAAAADAAkAAAABAAIAAAAEAAcAAAABAAAAAAAEAAgAAAABAAEAAAAEAAkAAAABAAIAAAAFAAgAAAABAAEAAAAFAAkAAAABAAIAAAAGAAgAAAABAAEAAAAGAAkAAAABAAIAAAAHAAgAAAABAAEAAAAHAAkAAAABAAIAAAAIAAgAAAABAAEAAAAIAAkAAAABAAIAAAAJAAgAAAABAAEAAAAJAAkAAAABAAIAAAAKAAgAAAABAAEAAAAKAAkAAAABAAIAAAALAAgAAAABAAEAAAALAAkAAAABAAIAAAAMAAgAAAABAAEAAAAMAAkAAAABAAIAAAANAAgAAAABAAEAAAANAAkAAAABAAIAAAAOAAgAAAABAAEAAAAOAAkAAAABAAIAAAAPAAgAAAABAAEAAAAPAAkAAAABAAIAAAAQAAgAAAABAAEAAAAQAAkAAAABAAIAAAARAAgAAAABAAEAAAARAAkAAAABAAIAAAASAAgAAAABAAEAAAASAAkAAAABAAIAAAATAAgAAAABAAAAAFATAAkAAAACAAIAAADs////AAAAAAAAAADs/wAAAAAAAAEAAADs/wEAAAAAAAEAAADs/wIAAAAAAAEAAADs/wMAAAAAAAEAAADs/wQAAAAAAAEAAADs/wUAAAAAAAEAAADs/wYAAAAAAAEAAADs/wcAAAAAAAEAAADs/wgAAAAAAAEAAADs/wkAAAAAAAIAAADt////AAABAAAAAADt/wAAAAABAAEAAADt/wEAAAABAAEAAADt/wIAAAABAAEAAADt/wMAAAABAAEAAADt/wQAAAABAAEAAADt/wUAAAABAAEAAADt/wYAAAABAAEAAADt/wcAAAABAAEAAADt/wgAAAABAAEAAADt/wkAAAABAAIAAADu////AAACAAAAAADu/wAAAAABAAAAAFDu/wEAAAABAAAAAFDu/wIAAAABAAAAAFDu/wMAAAABAAAAAFDu/wQAAAABAAAAAFDu/wUAAAABAAAAAFDu/wYAAAADAAEAAADu/wcAAAABAAEAAADu/wgAAAABAAEAAADu/wkAAAABAAIAAADv/wYAAAACAAAAAADv/wcAAAADAAEAAADv/wgAAAABAAEAAADv/wkAAAABAAIAAADw/wcAAAABAAAAAADw/wgAAAABAAEAAADw/wkAAAABAAIAAADx/wcAAAABAAAAAADx/wgAAAABAAEAAADx/wkAAAABAAIAAADy/wcAAAABAAAAAADy/wgAAAABAAEAAADy/wkAAAABAAIAAADz/wcAAAABAAAAAADz/wgAAAABAAEAAADz/wkAAAABAAIAAAD0/wcAAAABAAAAAAD0/wgAAAABAAEAAAD0/wkAAAABAAIAAAD1/wcAAAABAAAAAAD1/wgAAAABAAEAAAD1/wkAAAABAAIAAAD2/wcAAAABAAAAAAD2/wgAAAABAAEAAAD2/wkAAAABAAIAAAD3/wMAAAABAAAAAAD3/wQAAAABAAAAAAD3/wUAAAABAAAAAAD3/wYAAAABAAAAAAD3/wcAAAABAAAAAAD3/wgAAAABAAEAAAD3/wkAAAABAAIAAAD4/wcAAAABAAAAAAD4/wgAAAABAAEAAAD4/wkAAAABAAIAAAD9/wcAAAABAAAAAAD+/wcAAAABAAAAAAD//wcAAAABAAAAAAAAAAcAAAABAAAAAAABAAcAAAABAAAAAAACAAcAAAABAAAAAAADAAcAAAABAAAAAAAFAAcAAAABAAAAAAAGAAcAAAABAAAAAAAHAAcAAAABAAAAAAAIAAcAAAABAAAAAAAJAAcAAAABAAAAAAAKAAcAAAABAAAAAAALAAcAAAABAAAAAAAMAAcAAAABAAAAAAANAAcAAAABAAAAAAAOAAcAAAABAAAAAAAPAAcAAAABAAAAAAAQAP//AAAAAAAAAAAQAAAAAAABAAAAAGAQAAEAAAABAAAAAGAQAAIAAAABAAAAAGAQAAMAAAABAAAAAGAQAAQAAAABAAAAAGAQAAUAAAABAAAAAGAQAAYAAAABAAAAAGAQAAcAAAADAAAAAAARAP//AAABAAAAAAARAAAAAAABAAEAAAARAAEAAAABAAEAAAARAAIAAAABAAEAAAARAAMAAAABAAEAAAARAAQAAAABAAEAAAARAAUAAAABAAEAAAARAAYAAAABAAEAAAARAAcAAAABAAEAAAASAP//AAABAAAAAAASAAAAAAABAAEAAAASAAEAAAABAAEAAAASAAIAAAABAAEAAAASAAMAAAABAAEAAAASAAQAAAABAAEAAAASAAUAAAABAAEAAAASAAYAAAABAAEAAAASAAcAAAABAAEAAAATAP//AAACAAAAAAATAAAAAAABAAAAAFATAAEAAAABAAAAAFATAAIAAAABAAAAAFATAAMAAAABAAAAAFATAAQAAAABAAAAAFATAAUAAAABAAAAAFATAAYAAAABAAAAAFATAAcAAAABAAAAAFA=")
+tile_set = SubResource("TileSet_g4v7s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1566537720]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=340341420]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1571197096]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=896555889]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=2056649494]
+layout_mode = 2
